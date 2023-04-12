@@ -1,11 +1,16 @@
-
 import Home from './pages/Home'
+import './firebase'
+// import Authentication from './pages/Authentication/Authentication';
+import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
   return (
-    <div className="w-screen">
-      <Home />
-    </div>
+    <AuthProvider>
+      <div className="w-screen">
+        <Home />
+        {/* <Authentication /> */}
+      </div>
+    </AuthProvider>
   );
 }
 
