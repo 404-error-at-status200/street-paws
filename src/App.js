@@ -1,11 +1,11 @@
 import Navbar from "./components/navbar"
-import Cards from "./components/Cards"
+import Cards from "./components/carousel/Cards"
 
 function App() {
   return (
-    <div>
+    <div className="w-screen">
       <Navbar />
-      <Cards/>
+      <Cards className="w-screen"/>
     </div>
   );
 }
