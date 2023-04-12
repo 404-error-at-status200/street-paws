@@ -23,7 +23,7 @@ function Main(){
                 <button className='px-6 rounded-xl h-11 bg-[#61b3ff] border-[#61b3ff] border-[2px] hover:bg-white transition-all'>Login</button>
                 <button className='px-4 h-11 border-[2px] rounded-xl border-[#61b3ff] hover:bg-[#61b3ff] transition-all'>SignUp</button>
             </ul>
-            <div  className='flex md:hidden space-x-4'>
+            <div  className='flex md:hidden space-x-4' >
                 <Profile />
                 {nav ? <AiOutlineClose size={20} onClick={handleNav}/> :  <AiOutlineMenu size={20} onClick={handleNav}/>}
             </div>
