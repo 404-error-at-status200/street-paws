@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import Login from "../Authentication/login";
+import Signup from "../Authentication/signup";
 
 function Menu() {
+  const [isLogin, setIsLogIn] = useState(false)
+  const [isSignup, setIsSignup] = useState(false)
+  const [visible, setVisible] = useState(false)
+  function login() {
+    setIsLogIn(!isLogin)
+    console.log("run")
+  }
+  function signup(){
+    setIsSignup(!isSignup)
+  }
   return (
     <div
       className={
@@ -12,7 +24,11 @@ function Menu() {
         <li className="p-4 mx-4 border-b border-gray-600">Home</li>
         <li className="p-4 mx-4 border-b border-gray-600">Community</li>
         <li className="p-4 mx-4 border-b border-gray-600">Report</li>
+        <li className="p-4 mx-4 border-b border-gray-600" onClick={signup}>Sign Up</li>
+        <li className="p-4 mx-4 border-b border-gray-600" onClick={login}>Log In</li>
       </ul>
+      {isSignup && <Signup display={signup}/>}
+      {isLogin && <Login display={login}/>}
     </div>
   );
 }
