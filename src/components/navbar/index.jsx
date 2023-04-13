@@ -15,7 +15,7 @@ function Main(){
     return (
         <div className="flex justify-between items-center max-width-[1240px] mx-auto px-4 h-24">
             <Logo/>
-            {nav && <Menu />}
+            {nav && <Menu/>}
             <ul className='md:flex hidden md:space-x-4 items-center'>
                 <li className='p-4'>Home</li>
                 <li className='p-4'>Community</li>

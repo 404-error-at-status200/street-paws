@@ -4,7 +4,7 @@ function Menu() {
   return (
     <div
       className={
-        "absolute top-0 left-0 min-w-[60%] h-full border-r border-r-gray-900 bg-[#61b3ff] md:hidden ease-in-out duration-500 z-10"
+        "fixed top-0 left-0 min-w-[60%] h-full border-r border-r-gray-900 bg-[#61b3ff] md:hidden transition-all ease-in-out duration-500 z-10"
       }
     >
       <h1 className="w-full text-3xl font-bold m-4">Street Paws</h1>
