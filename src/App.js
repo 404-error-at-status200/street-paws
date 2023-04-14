@@ -6,13 +6,13 @@ import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
   return (
-    <AuthProvider>
-      <div className="w-screen">
-        {/* <Report /> */}
-        <Home />
+    //<AuthProvider>
+      <div className="w">
+        <Report />
+        {/* <Home /> */}
         {/* <Authentication /> */}
       </div>
-    </AuthProvider>
+    //</AuthProvider>
   );
 }
 
