@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/street-paws/static/css/main.46bd94e3.css",
+    "main.js": "/street-paws/static/js/main.e82a0990.js",
+    "static/js/787.663c81b5.chunk.js": "/street-paws/static/js/787.663c81b5.chunk.js",
+    "static/media/poster2-pic.jpg": "/street-paws/static/media/poster2-pic.0f6ea62cb580c4f88197.jpg",
+    "static/media/default-vet.jpg": "/street-paws/static/media/default-vet.ebc1ee8be4ce3ed609ea.jpg",
+    "static/media/poster1-pic.jpg": "/street-paws/static/media/poster1-pic.1dd14a1326a8afeb0695.jpg",
+    "static/media/poster3-pic.jpg": "/street-paws/static/media/poster3-pic.c41a0abdcbd797382ed1.jpg",
+    "static/media/poor-puppy.jpg": "/street-paws/static/media/poor-puppy.ef3a6cb702b36d90aa70.jpg",
+    "static/media/sp-logo.jpg": "/street-paws/static/media/sp-logo.d89daadecfa2227c8368.jpg",
+    "index.html": "/street-paws/index.html",
+    "main.46bd94e3.css.map": "/street-paws/static/css/main.46bd94e3.css.map",
+    "main.e82a0990.js.map": "/street-paws/static/js/main.e82a0990.js.map",
+    "787.663c81b5.chunk.js.map": "/street-paws/static/js/787.663c81b5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.46bd94e3.css",
+    "static/js/main.e82a0990.js"
+  ]
+}
