@@ -14,7 +14,6 @@ export default function Signup(props) {
   const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  console.log(props)
   function switchMethod (){
     props.display()
     props.switchm()
@@ -38,7 +37,6 @@ export default function Signup(props) {
       props.display()
     } catch (e) {
       setError("Failed to create an account");
-      console.log(error);
     }
     setLoading(false);
   }

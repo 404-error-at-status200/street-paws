@@ -4,7 +4,13 @@ import { animals, sickness } from "../../preset";
 import Puppy from "../../assets/poor-puppy.jpg";
 import axios from "axios";
 import { useAuth } from "../../contexts/AuthContext";
-import { setDoc, doc, getFirestore, updateDoc, arrayUnion } from "firebase/firestore";
+import {
+  setDoc,
+  doc,
+  getFirestore,
+  updateDoc,
+  arrayUnion,
+} from "firebase/firestore";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
 import FinalReport from "./finalreport";
@@ -12,9 +18,8 @@ import FinalReport from "./finalreport";
 function Main() {
   let count = 0;
   const { currentUser } = useAuth();
-  const r_id = v4()
+  const r_id = v4();
   const storage = getStorage();
-  console.log(currentUser);
   const [outputImg, setOutputImg] = useState();
   const [docName, setDocName] = useState();
   const [prediction, setPrediction] = useState();
@@ -32,14 +37,11 @@ function Main() {
   const symp3Ref = useRef();
   const notesRef = useRef();
   const db = getFirestore();
-  const [showMsg, setShowMsg] = useState(false)
+  const [showMsg, setShowMsg] = useState(false);
   const loadFile = (e) => {
     setOutputImg(URL.createObjectURL(e.target.files[count]));
     count += 1;
   };
-
-
-
 
   function display() {
     setShowReport(!showReport);
@@ -50,20 +52,18 @@ function Main() {
     const d = new Date();
 
     // get prediction based on illness
-    const HOST = "http://192.168.43.208:8080/disease";
+    const HOST = "https://street-paws-backend.36se-comp-astev.repl.co/disease";
     const predict = `${HOST}?ani=${animalRef.current.value}&s1=${symp1Ref.current.value}&s2=${symp2Ref.current.value}&s3=${symp3Ref.current.value}`;
     await axios
       .get(predict)
       .then((data) => setPrediction(data.data))
-      .catch((err) => console.log(err));
+      .catch((err) => {});
 
     // get location
-    navigator.geolocation.getCurrentPosition(async(position) => {
+    navigator.geolocation.getCurrentPosition(async (position) => {
       const { latitude, longitude } = position.coords;
-      console.log(latitude, longitude);
       const lo_url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
       setGmapURL(`https://www.google.com/maps/@${latitude},${longitude},20z`);
-      console.log(lo_url)
       await fetch(lo_url)
         .then((res) => res.json())
         .then((data) => setAddress(data.address));
@@ -71,74 +71,53 @@ function Main() {
         alert("Please also take an image of the animal");
         return;
       }
-      const imgName = `reportImages/${currentUser.uid+v4()}`;
+      const imgName = `reportImages/${currentUser.uid + v4()}`;
       try {
-        uploadBytes(ref(storage, imgName), outputImg).then((e) =>
-          console.log("Uploaded")
+        uploadBytes(ref(storage, imgName), outputImg).then((e) => {}
         );
       } catch (error) {
         alert(error);
       }
-      console.log("first");
+      setShowReport(!showReport);
+      alert("An email regarding the animal and its treatment has been sent to your email account")
       setDocName(`${currentUser.uid}+${v4()}`);
 
       updateDoc(doc(db, "reports", currentUser.uid), {
         unsolved: arrayUnion({
-        accessToken: currentUser.accessToken,
-        animal: animalRef.current.value,
-        city: address.city,
-        country: address.country,
-        createTime: d.toString(),
-        email: currentUser.email,
-        gMapLink: gmapURL,
-        latitude: latitude,
-        longitude: longitude,
-        notes: notesRef.current.value,
-        phoneNumber: currentUser.phoneNumber,
-        photoURL: currentUser.photoURL,
-        predictedIllness: prediction,
-        state: address.state,
-        symptom1: symp1Ref.current.value,
-        symptom2: symp2Ref.current.value,
-        symptom3: symp3Ref.current.value,
-        uid: currentUser.uid,
-        solved: false,
-        animalPhoto: imgName
-      })
+          accessToken: currentUser.accessToken,
+          animal: animalRef.current.value,
+          city: address.city,
+          country: address.country,
+          createTime: d.toString(),
+          email: currentUser.email,
+          gMapLink: gmapURL,
+          latitude: latitude,
+          longitude: longitude,
+          notes: notesRef.current.value,
+          phoneNumber: currentUser.phoneNumber,
+          photoURL: currentUser.photoURL,
+          predictedIllness: prediction,
+          state: address.state,
+          symptom1: symp1Ref.current.value,
+          symptom2: symp2Ref.current.value,
+          symptom3: symp3Ref.current.value,
+          uid: currentUser.uid,
+          solved: false,
+          animalPhoto: imgName,
+        }),
       })
         .then(() => {
-          console.log(docName)
-          setShowMsg(!showMsg)
-          console.log("show box")
+          setShowMsg(!showMsg);
         })
         .catch((e) => {
-          console.log("Database Error " + e);
+          
         });
-        
-      });
-
-    console.log(loc_url);
-
-    // await axios
-    //   .get(loc_url)
-    //   .then((data) => {
-    //     setAddress(data.address)
-    //     console.log(data)
-    //   })
-    //   .catch((err) => console.log("Axios bug" + err));
-
-    console.log(address);
-
-    console.log(currentUser);
-
-    // upload pic to bucket
-
-    console.log("Function completed running");
+    });
   };
   return (
     <>
       <Navbar />
-      
+
       <div className="overflow-x-hidden max-w-full">
         <form
           onSubmit={handleSubmit}
@@ -186,7 +165,11 @@ function Main() {
               className=" w-[90%] border-[2px] border-blue-500 rounded-lg p-[10px] my-2 mx-5"
             />
           )}
-          {showMsg && <h1 className="w-full px-5 text-3xl font-bold m-4">Your animal has {prediction}</h1>}
+          {showMsg && (
+            <h1 className="w-full px-5 text-3xl font-bold m-4">
+              Your animal has {prediction}
+            </h1>
+          )}
           <input
             required
             list="data"
@@ -245,6 +228,19 @@ function Main() {
             className="w-[170px] bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-4 my-4 cursor-pointer"
           />
         </form>
+        {true && (
+          <FinalReport
+            display={display}
+            imgSrc={outputImg}
+            symp={[
+              symp1Ref.current.value,
+              symp2Ref.current.value,
+              symp3Ref.current.value,
+            ]}
+            notes={notesRef.current.value}
+            prediction={prediction}
+          />
+        )}
       </div>
     </>
   );

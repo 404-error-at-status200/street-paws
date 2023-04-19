@@ -8,7 +8,7 @@ import { FaFacebook, FaApple } from "react-icons/fa";
 export default function Login(props) {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login } = useAuth();
+  const { login, googleLogin, facebookLogin } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -20,16 +20,34 @@ export default function Login(props) {
     props.display()
     props.switchm()
   }
+  function googleSignUp(e){
+    setLoading(true);
+    try {
+      setError("");
+      googleLogin();
+      props.display();
+    } catch (e) {
+    }
+    setLoading(false);
+  }
+  function facebookSignup(e){
+    setLoading(true);
+    try {
+      setError("");
+      facebookLogin();
+      props.display();
+    } catch (e) {
+    }
+    setLoading(false);
+  }
   function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
     try {
       setError("");
-      console.log(emailRef.current.value, passwordRef.current.value);
       login(emailRef.current.value, passwordRef.current.value);
       props.display();
     } catch (e) {
-      console.log(e)
     }
     setLoading(false);
   }
@@ -91,8 +109,8 @@ export default function Login(props) {
           <div className="flex flex-col">
             <div className="text-center text-lg">Or Log In with</div>
             <div className="flex space-x-16 py-4 justify-center items-center">
-              <FcGoogle size={30} />
-              <FaFacebook size={30} color="#4267B2" />
+              <FcGoogle size={30} onClick={googleSignUp}/>
+              <FaFacebook size={30} color="#4267B2" onClick={facebookSignup}/>
               <FaApple size={30} color="#555555" />
             </div>
           </div>

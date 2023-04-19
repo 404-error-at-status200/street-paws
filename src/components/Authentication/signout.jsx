@@ -14,11 +14,9 @@ export default function Signout(props) {
     try {
       setError("");
       signout();
-      console.log("first")
       props.display()
     } catch (e) {
       setError("Failed to create an account");
-      console.log(error);
     }
     setLoading(false);
     

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { getFirestore, setDoc, doc } from "firebase/firestore";
 
 const AuthContext = React.createContext()
@@ -10,9 +11,27 @@ export function useAuth() {
 
 export function AuthProvider({children}) {
     const [currentUser, setCurrentUser] = useState()
+    
     const [loading, setLoading] = useState(true)
     const auth = getAuth()
     const db = getFirestore()
+
+    function googleLogin() {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+        .then(userCred => {
+            setDoc(doc(db, "users", userCred.user.uid), {
+                accessToken: GoogleAuthProvider.credentialFromResult(userCred).accessToken,
+                createdAt:userCred.user.metadata.createdAt,
+                displayname:userCred.user.displayName,
+                email:userCred.user.email,
+                emailVerified:userCred.user.emailVerified,
+                lastLoginAt:userCred.user.metadata.lastLoginAt,
+                phoneNumber:userCred.user.phoneNumber,
+                photoURL:userCred.user.photoURL,
+            })
+        })
+    }
 
     function signup(email, password, name, phoneNumber){
         createUserWithEmailAndPassword(auth, email, password).then((userCred) => {
@@ -43,13 +62,11 @@ export function AuthProvider({children}) {
     }
 
     function login(email, password){
-        console.log("I am here")
         signInWithEmailAndPassword(auth, email, password).then((userCred) => {
             setDoc(doc(db, "users", userCred.user.uid), {
                 emailVerified:userCred.user.emailVerified,
                 lastLoginAt:userCred.user.metadata.lastLoginAt
             }, {merge: true}).catch(e => {
-                console.log("Database Error")
             })
         }).catch(e => {
             alert("Log In Error")
@@ -72,7 +89,8 @@ export function AuthProvider({children}) {
         currentUser,
         signup,
         login,
-        signout
+        signout,
+        googleLogin
     }
   return (
     <AuthContext.Provider value={value}>
