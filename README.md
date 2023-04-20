@@ -1,6 +1,9 @@
 # Street-paws
 
 ----
+
+Our submission video : https://youtu.be/eaC7Ly3Th0o
+
 We see many stray animals laying on the street every day during our daily commute but often unsee them because most of the time we dont know about the disease it currently has.
 Presenting Street-paws, a Progressive Web App that helps users assist stray animals by simply taking a picture and providing the symptoms its currently facing.
 Our Application predicts the disease of the animal and notifies a Vet nearby so that they can assist you.
