@@ -8,6 +8,9 @@ import { useAuth } from './contexts/AuthContext';
 import { useState } from 'react';
 import ProtectedRoutes from './utils/protected-routes';
 import Community from "./pages/Community"
+import SentMessage from './components/communityChat/sentMessage';
+import RecvMessage from './components/communityChat/recievedMessage';
+import Error404Page from './pages/ErrorPages/Error404Page';
 
 function App() {
   const router = createBrowserRouter([
@@ -20,6 +23,9 @@ function App() {
     },{
       path: "/community",
       element: <ProtectedRoutes protect={<Community/>}/>
+    },{
+      path: "/*",
+      element: <Error404Page />
     },
   ]);
   return (

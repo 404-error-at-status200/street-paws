@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Street-paws
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+----
+We see many stray animals laying on the street every day during our daily commute but often unsee them because most of the time we dont know about the disease it currently has.
+Presenting Street-paws, a Progressive Web App that helps users assist stray animals by simply taking a picture and providing the symptoms its currently facing.
+Our Application predicts the disease of the animal and notifies a Vet nearby so that they can assist you.
+Our Application also has a Community Chat feature where you can chat with fellow-members who can assist you if the Vet is a bit late to respond.
 
-## Available Scripts
+## Core Ideas
 
-In the project directory, you can run:
+----
 
-### `npm start`
+Our Application can be broken down into 3 parts
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Neaby Vets
+2. Disease Prediction
+3. Community Chat
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Pages
 
-### `npm test`
+----
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Flow of our Application
 
-### `npm run build`
+----
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Tech-Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+----
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. ReactJS
+2. Firebase Authentication
+3. Firebase Firestore
+4. Flask
+5. Scikit-learn

@@ -228,7 +228,7 @@ function Main() {
             className="w-[170px] bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-4 my-4 cursor-pointer"
           />
         </form>
-        {true && (
+        {showReport && (
           <FinalReport
             display={display}
             imgSrc={outputImg}

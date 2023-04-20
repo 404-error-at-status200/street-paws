@@ -10,6 +10,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 import { EffectCards, Pagination } from 'swiper';
+import { Link } from 'react-router-dom';
 
 const Cards = () => {
 
@@ -37,7 +38,7 @@ const Cards = () => {
                             <p className="text-gray-700 dark:text-gray-300 text-base">
                                 Join our community and make a difference for stray animals in your area.
                             </p>
-                            <button className='px-3 rounded-xl h-8 bg-[#61b3ff] border-[#61b3ff] border-[2px] hover:bg-white transition-all font-semibold text-sm'>Get involved</button>
+                            <Link to={"/community"}> <button className='px-3 rounded-xl h-8 bg-[#61b3ff] border-[#61b3ff] border-[2px] hover:bg-white transition-all font-semibold text-sm'>Get involved</button></Link>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -47,11 +48,11 @@ const Cards = () => {
                         src={ChatBot}
                         alt="Mountain" />
                     <div className="px-6 py-4">
-                        <div className="font-bold text-xl mb-2">ChatBot</div>
+                        <div className="font-bold text-xl mb-2">Report</div>
                         <p className="text-gray-700 dark:text-gray-300 text-base">
-                            Get instant support and answers to your questions about animal care and welfare.
+                            Report an animal you think might be sick, and we'll do the rest
                         </p>
-                        <button className='px-3 rounded-xl h-8 bg-[#61b3ff] border-[#61b3ff] border-[2px] hover:bg-white transition-all font-semibold text-sm'>Find a vet</button>
+                        <Link to={"/report"}><button className='px-3 rounded-xl h-8 bg-[#61b3ff] border-[#61b3ff] border-[2px] hover:bg-white transition-all font-semibold text-sm'>Find a vet</button></Link>
                     </div>
                 </div>
                 </SwiperSlide>
@@ -65,7 +66,7 @@ const Cards = () => {
                         <p className="text-gray-700 dark:text-gray-300 text-base">
                             Find nearby veterinary clinics and give stray animals the care they deserve.
                         </p>
-                        <button className='px-3 rounded-xl h-8 bg-[#61b3ff] border-[#61b3ff] border-[2px] hover:bg-white transition-all font-semibold text-sm'>Chat Now</button>
+                        <Link to="/"><button className='px-3 rounded-xl h-8 bg-[#61b3ff] border-[#61b3ff] border-[2px] hover:bg-white transition-all font-semibold text-sm'>Chat Now</button></Link>
                     </div>
                 </div>
                 </SwiperSlide>

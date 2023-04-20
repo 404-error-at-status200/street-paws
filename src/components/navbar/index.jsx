@@ -28,12 +28,13 @@ function Main() {
     setIsSignOut(!isSignOut);
   }
   return (
-    <div className="flex justify-between items-center max-width-[1240px] mx-auto px-4 h-[65px] pt-5">
+    <div className="flex justify-between items-center max-width-[1240px] mx-auto px-4 h-[70px] pt-5">
       <Logo />
       {nav && <Menu />}
       <ul className="md:flex hidden md:space-x-4 items-center">
         <Link to="/"><li className="p-4">Home</li></Link>
         <Link to="/report"><li className="p-4">Report</li></Link>
+        <Link to="/community"><li className="p-4">Community</li></Link>
         {!currentUser ? (
           <>
             <button

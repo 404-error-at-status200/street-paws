@@ -7,18 +7,18 @@ import Authentication from "../../pages/Authentication/Authentication";
 import { Link } from "react-router-dom";
 
 function Menu() {
-  const [isLogin, setIsLogIn] = useState(false)
-  const [isSignup, setIsSignup] = useState(false)
-  const [isSignOut, setIsSignOut] = useState(false)
-  const { currentUser } = useAuth()
+  const [isLogin, setIsLogIn] = useState(false);
+  const [isSignup, setIsSignup] = useState(false);
+  const [isSignOut, setIsSignOut] = useState(false);
+  const { currentUser } = useAuth();
   function login() {
-    setIsLogIn(!isLogin)
+    setIsLogIn(!isLogin);
   }
-  function signup(){
-    setIsSignup(!isSignup)
+  function signup() {
+    setIsSignup(!isSignup);
   }
-  function signout(){
-    setIsSignOut(!isSignOut)
+  function signout() {
+    setIsSignOut(!isSignOut);
   }
   return (
     <div
@@ -28,18 +28,39 @@ function Menu() {
     >
       <h1 className="w-full text-3xl font-bold m-4">Street Paws</h1>
       <ul className="pt-4 uppercase">
-      <Link to="/"><li className="p-4 mx-4 border-b border-gray-600">Home</li></Link>
-        <Link to="/report"><li className="p-4 mx-4 border-b border-gray-600">Report</li></Link>
-        {!currentUser ? <>
-          <li className="p-4 mx-4 border-b border-gray-600" onClick={signup}>Sign Up</li>
-          <li className="p-4 mx-4 border-b border-gray-600" onClick={login}>Log In</li>
-        </> : <>
-          <li className="p-4 mx-4 border-b border-gray-600" onClick={signout}>Sign out</li>
-        </>}
+        <Link to="/">
+          <li className="p-4 mx-4 border-b border-gray-600">Home</li>
+        </Link>
+        <Link to="/report">
+          <li className="p-4 mx-4 border-b border-gray-600">Report</li>
+        </Link>
+        <Link to="/community">
+          <li className="p-4 mx-4 border-b border-gray-600">Community</li>
+        </Link>
+        {!currentUser ? (
+          <>
+            <li className="p-4 mx-4 border-b border-gray-600" onClick={signup}>
+              Sign Up
+            </li>
+            <li className="p-4 mx-4 border-b border-gray-600" onClick={login}>
+              Log In
+            </li>
+          </>
+        ) : (
+          <>
+            <li className="p-4 mx-4 border-b border-gray-600" onClick={signout}>
+              Sign out
+            </li>
+          </>
+        )}
       </ul>
-      {isSignup && <Authentication type="signup" display={signup} switchm={login}/> }
-      {isLogin && <Authentication type="login" display={login} switchm={signup}/>}
-      {isSignOut && <Signout display={signout}/>}
+      {isSignup && (
+        <Authentication type="signup" display={signup} switchm={login} />
+      )}
+      {isLogin && (
+        <Authentication type="login" display={login} switchm={signup} />
+      )}
+      {isSignOut && <Signout display={signout} />}
     </div>
   );
 }

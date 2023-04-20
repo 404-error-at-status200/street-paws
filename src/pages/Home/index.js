@@ -19,7 +19,7 @@ function Main() {
   return (
     <>
       <Navbar />
-      {userName && <h2 className="font-bold text-2xl pb-2 mb-2 px-5">Hello, {userName}!</h2>}
+      {userName && <h2 className="font-bold text-2xl pb-2 mb-2 px-5">Hello, Animal Helper!</h2>}
       <Cards className="w-screen" />
       <ClosestVet />
     </>
